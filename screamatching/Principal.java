@@ -6,12 +6,11 @@ import screamatching.modelos.Episodio;
 import screamatching.modelos.Filme;
 import screamatching.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
-        Filme favorito = new Filme();
-
-        favorito.setNome("The Matrix");
-        favorito.setAnoDeLancamento(1999);
+        Filme favorito = new Filme("The Matrix",1999);
         favorito.setDuracaoEmMinutos(135);
         favorito.setIncluidoNoPlano(true);
 
@@ -23,19 +22,14 @@ public class Principal {
         System.out.println("Duração do filme: " + favorito.getDuracaoEmMinutos());
         System.out.println("Média de avaliações do filme: " + favorito.pegaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("Lost");
-        lost.setAnoDeLancamento(2000);  
+        Serie lost = new Serie("Lost",2006);
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(30);
         System.out.println("Duração da Série: " + lost.getDuracaoEmMinutos());
 
-        Filme outroFavorito = new Filme();
-
-        outroFavorito.setNome("Avatar");
-        outroFavorito.setAnoDeLancamento(2018);
+        Filme outroFavorito = new Filme("Avatar",2018);
         outroFavorito.setDuracaoEmMinutos(200);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -52,6 +46,18 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+        var filmeDoUsuario = new Filme("Cinderela",1943);
+        filmeDoUsuario.setDuracaoEmMinutos(200);
+        filmeDoUsuario.avalia(10);
+
+        ArrayList<Filme>listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDoUsuario);
+        listaDeFilmes.add(favorito);
+        listaDeFilmes.add(outroFavorito);
+        System.out.println("Tamanho do filme: " + listaDeFilmes.size());
+        System.out.println("Primeiro filme: " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
 
 
     }
