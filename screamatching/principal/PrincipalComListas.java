@@ -4,7 +4,7 @@ import screamatching.modelos.Filme;
 import screamatching.modelos.Serie;
 import screamatching.modelos.Titulo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PrincipalComListas {
     public static void main(String[] args){
@@ -28,5 +28,20 @@ public class PrincipalComListas {
                 System.out.println(filme.getClassificavel());
             }
         }
+        List<String> buscaPorArtistas = new LinkedList<>();
+        buscaPorArtistas.add("Adam Sandler");
+        buscaPorArtistas.add("Jennifer Winston");
+        buscaPorArtistas.add("Stephany");
+        System.out.println(buscaPorArtistas);
+
+        Collections.sort(buscaPorArtistas);
+        System.out.println("Depois da ordenação: " + buscaPorArtistas);
+
+        Collections.sort(listaDeAssistidos);
+        System.out.println("Depois da ordenação: " + listaDeAssistidos);
+
+        listaDeAssistidos.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Ordenando por ano: " + listaDeAssistidos);
+
     }
 }
